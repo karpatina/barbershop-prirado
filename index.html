@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>При Радо – Barber Shop</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #0f0f0f;
+    color: #ffffff;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* HEADER */
+header {
+    background: #000;
+    padding: 20px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    letter-spacing: 3px;
+    font-size: 22px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+/* HERO */
+.hero {
+    height: 100vh;
+    background:
+        linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)),
+        url("Gemini_Generated_Image_7fqn2y7fqn2y7fqn.png") center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.hero h2 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.btn {
+    background: #c59d5f;
+    color: black;
+    padding: 12px 30px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+
+/* SECTIONS */
+section {
+    padding: 100px 0;
+}
+
+section h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 32px;
+}
+
+/* ABOUT */
+.about p {
+    max-width: 700px;
+    margin: auto;
+    text-align: center;
+}
+
+/* SERVICES */
+.services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.service {
+    background: #1c1c1c;
+    padding: 30px;
+    text-align: center;
+}
+
+/* BOOKING */
+.booking form {
+    max-width: 450px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.booking input,
+.booking select {
+    padding: 12px;
+    border: none;
+    outline: none;
+}
+
+/* FOOTER */
+footer {
+    background: #000;
+    padding: 30px 0;
+    text-align: center;
+    font-size: 14px;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .hero h2 {
+        font-size: 34px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="container">
+        <h1>ПРИ РАДО</h1>
+        <nav>
+            <ul>
+                <li><a href="#booking">Запази час</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <h2>Barber Shop „При Радо“</h2>
+        <p>Люлин • Филиповци</p>
+        <a href="#booking" class="btn">Запази час</a>
+    </div>
+</section>
+
+<section class="about">
+    <div class="container">
+        <h2>За нас</h2>
+        <p>
+            Класически бръснарски салон.
+            Бързо. Чисто. Без компромиси.
+        </p>
+    </div>
+</section>
+
+<section class="services">
+    <div class="container">
+        <h2>Услуги</h2>
+        <div class="services">
+            <div class="service">Само коса</div>
+            <div class="service">Само брада</div>
+            <div class="service">Коса + брада</div>
+            <div class="service">Вежди</div>
+        </div>
+    </div>
+</section>
+
+<section id="booking" class="booking">
+    <div class="container">
+        <h2>Запази час</h2>
+
+        <form>
+            <input type="text" placeholder="Име" required>
+            <input type="tel" placeholder="Телефон" required>
+
+            <select required>
+                <option value="">Избери салон</option>
+                <option>Люлин</option>
+                <option>Филиповци</option>
+            </select>
+
+            <select required>
+                <option value="">Избери услуга</option>
+                <option>Само коса</option>
+                <option>Само брада</option>
+                <option>Коса + брада</option>
+                <option>Вежди</option>
+            </select>
+
+            <select id="day">
+                <option>Днес</option>
+                <option>Утре</option>
+            </select>
+
+            <select id="time"></select>
+
+            <button class="btn" type="submit">Потвърди</button>
+        </form>
+    </div>
+</section>
+
+<footer>
+    <p>📍 Люлин & Филиповци | 📞 089 000 0000</p>
+    <p>© При Радо</p>
+</footer>
+
+<script>
+const timeSelect = document.getElementById("time");
+
+for (let m = 10 * 60; m <= 19 * 60; m += 30) {
+    let h = Math.floor(m / 60);
+    let min = m % 60;
+    let t = `${h.toString().padStart(2,"0")}:${min.toString().padStart(2,"0")}`;
+    let o = document.createElement("option");
+    o.textContent = t;
+    timeSelect.appendChild(o);
+}
+</script>
+
+</body>
+</html>
